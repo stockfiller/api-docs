@@ -333,6 +333,20 @@
               </ul>
           </li>
           <li>
+            <a href="#json-api" class="toc-h1 toc-link" data-title="JSON:API">JSON:API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#links" class="toc-h2 toc-link" data-title="Links"><a href="https://jsonapi.org/format/#document-links">Links</a></a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination"><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></a>
+                  </li>
+                  <li>
+                    <a href="#multiple-resources-response" class="toc-h2 toc-link" data-title="Multiple Resources Response"><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources Response</a></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -351,7 +365,7 @@
 <p>All your calls must be authorized using:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you simply pass the Authorization header with each request</span>
-curl <span class="s2">"https://oms-api.stockfillertech.com/v1/..."</span> <span class="se">\</span>
+curl <span class="s2">"https://oms-api.stockfillertech.com/v1/example"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
 </code></pre></div>
 <blockquote>
@@ -367,9 +381,12 @@ curl <span class="s2">"https://oms-api.stockfillertech.com/v1/..."</span> <span 
 <aside class="notice">
 You must replace <code>abcd1234-token-example-1234abcd</code> with your given personal API key.
 </aside>
-<h1 id='orders'>Orders</h1><h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order"</span> <span class="se">\</span>
+<h1 id='orders'>Orders</h1>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
 </code></pre></div>
+
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -442,10 +459,16 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
+<h2 id='get-all-orders'>Get All Orders</h2>
+
 <p>This endpoint retrieves all orders paginated.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>GET https://oms-api.stockfillertech.com/v1/order</code></p>
+
 <h3 id='query-parameters'>Query Parameters</h3>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -464,10 +487,6 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <td>If set to false, the result will include kittens that have already been adopted.</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 <h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
@@ -497,7 +516,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -536,7 +555,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -550,6 +569,12 @@ Remember — a happy kitten is an authenticated kitten!
 <td>The ID of the kitten to delete</td>
 </tr>
 </tbody></table>
+<h1 id='json-api'>JSON:API</h1><h2 id='links'><a href="https://jsonapi.org/format/#document-links">Links</a></h2>
+<p>Links to the resources are applied in the json responses. This also includes the pagination logic</p>
+<h2 id='pagination'><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></h2>
+<p>Links to fetch first, last, previous and next set of resources are present in the root &quot;links&quot; key. We use <code>page[offset]</code> and <code>page[limit]</code> for this purpose. <code>page[limit]</code> is <em>not</em> allowed to be any higher than <code>50</code>.</p>
+<h2 id='multiple-resources-response'><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources Response</a></h2>
+<p>When attemping to fetch more than 1 specific resource, they are given as an array in the &quot;data&quot; key</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

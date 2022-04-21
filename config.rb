@@ -61,3 +61,11 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+# Global Variables
+set :host, 'oms-api.stockfillertech.com'
+config[:endpoint]
+set :endpoint, 'https://oms-api.stockfillertech.com/v1/'
+config[:endpoint]
+set :example_token, 'abcd1234-token-example-1234abcd'
+config[:example_token]

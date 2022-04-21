@@ -1,0 +1,68 @@
+```json
+{
+  "links": {
+    "self": "http:\/\/<%= config[:host] %>\/v1\/order",
+    "first": "http:\/\/<%= config[:host] %>\/v1\/order?page%5Boffset%5D=0&page%5Blimit%5D=3&sort=id",
+    "last": "http:\/\/<%= config[:host] %>\/v1\/order?page%5Boffset%5D=43674&page%5Blimit%5D=3&sort=id",
+    "prev": null,
+    "next": "http:\/\/<%= config[:host] %>\/v1\/order?page%5Boffset%5D=3&page%5Blimit%5D=3&sort=id"
+  },
+  "data": [
+    {
+      "type": "order",
+      "id": "DEMOORDER1",
+      "attributes": {
+        "externalRef": null,
+        "deliveryDate": "2020-01-01",
+        "updatedAt": "2019-12-31 23:59:59"
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/order\/DEMOORDER1"
+      },
+      "relationships": {
+        "orderProducts": {
+          "links": {
+            "self": "http:\/\/<%= config[:host] %>\/v1\/order\/DEMOORDER1\/relationships\/orderProducts"
+          },
+          "data": [
+            {
+              "type": "orderProduct",
+              "id": "1"
+            },
+            {
+              "type": "orderProduct",
+              "id": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "order",
+      "id": "DEMOORDER2",
+      "attributes": {
+        "externalRef": null,
+        "deliveryDate": "2020-01-02",
+        "updatedAt": "2019-12-31 23:59:59"
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/order\/DEMOORDER2"
+      },
+      "relationships": {
+        "orderProducts": {
+          "links": {
+            "self": "http:\/\/<%= config[:host] %>\/v1\/order\/DEMOORDER2\/relationships\/orderProducts"
+          },
+          "data": [
+            {
+              "type": "orderProduct",
+              "id": "3"
+            }
+          ]
+        }
+      }
+    },
+    ...
+  ]
+}
+```

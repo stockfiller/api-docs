@@ -1,14 +1,11 @@
 ---
-title: API Reference
+title: Stockfiller API Docs
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='mailto:tech@stockfiller.com'>Mail us for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -20,55 +17,35 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for the Stockfiller API
+
+[example-api-key]: abcd1234-token-example-1234abcd
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+This is the Stockfiller API used to fetch and maintain orders and their underlying products. 
 
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> All your calls must be authorized using:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+# With shell, you simply pass the Authorization header with each request
+curl "https://oms-api.stockfillertech.com/v1/..." \
+  -H "Authorization: Bearer [example-api-key]"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `[example-api-key]` with your given API key.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Stockfiller uses API keys to allow access to the API. You can contact us for a new API key at our [mail](mailto:tech@stockfiller.com).
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Stockfiller expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer [example-api-key]`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>[example-api-key]</code> with your given personal API key.
 </aside>
 
 # Kittens

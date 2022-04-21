@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - json_api.md.erb
   - errors.md.erb
 
 search: true
@@ -30,7 +31,7 @@ This is the Stockfiller API used to fetch and maintain orders and their underlyi
 
 ```shell
 # With shell, you simply pass the Authorization header with each request
-curl "<%= config[:endpoint] %>..." \
+curl "<%= config[:endpoint] %>example" \
   -H "Authorization: Bearer <%= config[:example_token] %>"
 ```
 
@@ -48,33 +49,7 @@ You must replace <code><%= config[:example_token] %></code> with your given pers
 
 # Orders
 
-## Get All Orders
-
-```shell
-curl "<%= config[:endpoint] %>order" \
-  -H "Authorization: Bearer <%= config[:example_token] %>"
-```
-
-> The above command returns JSON structured like this:
-
-<%= partial "includes/order/get_index_json.md.erb" %>
-
-This endpoint retrieves all orders paginated.
-
-### HTTP Request
-
-`GET <%= config[:endpoint] %>order`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<%= partial "includes/order/get_index.md.erb" %>
 
 ## Get a Specific Kitten
 

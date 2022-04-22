@@ -303,7 +303,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-eb91ca50.png" class="logo" alt="" />
+      <img src="images/logo-5731313a.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -325,26 +325,12 @@
                     <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get All Orders">Get All Orders</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-a-specific-order" class="toc-h2 toc-link" data-title="Get a Specific Order">Get a Specific Order</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#json-api" class="toc-h1 toc-link" data-title="JSON:API">JSON:API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#links" class="toc-h2 toc-link" data-title="Links"><a href="https://jsonapi.org/format/#document-links">Links</a></a>
-                  </li>
-                  <li>
-                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination"><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></a>
-                  </li>
-                  <li>
-                    <a href="#multiple-resources-response" class="toc-h2 toc-link" data-title="Multiple Resources Response"><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources Response</a></a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -359,7 +345,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/">JSON:API</a> specifications.</p>
+<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/">JSON:API</a> specifications. JSON:API terms will be used throughout the documentation and you can <a href="#json-api">read more about them here</a>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>All your calls must be authorized using:</p>
@@ -382,14 +368,13 @@ curl <span class="s2">"https://oms-api.stockfillertech.com/v1/example"</span> <s
 You must replace <code>abcd1234-token-example-1234abcd</code> with your given personal API key.
 </aside>
 <h1 id='orders'>Orders</h1>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
+<p><h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order&quot;</span> <span class="se">&lt;/span&gt;
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
-
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-</blockquote>
+</blockquote></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -406,6 +391,7 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"externalRef"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deliveryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31 00:00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31 23:59:59"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -429,37 +415,10 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEMOORDER2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"externalRef"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"deliveryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-02"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31 23:59:59"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">oms-api.stockfillertech.com</span><span class="se">\/</span><span class="s2">v1</span><span class="se">\/</span><span class="s2">order</span><span class="se">\/</span><span class="s2">DEMOORDER2"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"orderProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">oms-api.stockfillertech.com</span><span class="se">\/</span><span class="s2">v1</span><span class="se">\/</span><span class="s2">order</span><span class="se">\/</span><span class="s2">DEMOORDER2</span><span class="se">\/</span><span class="s2">relationships</span><span class="se">\/</span><span class="s2">orderProducts"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderProduct"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-
-<h2 id='get-all-orders'>Get All Orders</h2>
 
 <p>This endpoint retrieves all orders paginated.</p>
 
@@ -467,114 +426,243 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 
 <p><code>GET https://oms-api.stockfillertech.com/v1/order</code></p>
 
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='attributes'>Attributes</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>externalRef</td>
+<td>string</td>
+<td>Your defined external order ref. <code>null</code> if undefined</td>
 </tr>
 <tr>
-<td>available</td>
+<td>deliveryDate</td>
+<td>string</td>
+<td>The order&#39;s delivery date in the format &quot;YYYY-MM-DD&quot;</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>UTC Date time when the order was created</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>string</td>
+<td>UTC Date time when the order was last modified</td>
+</tr>
+</tbody></table>
+
+<h3 id='relationships'>Relationships</h3>
+
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Direct Relation</th>
+<th>Multiple</th>
+<th><code>include</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderProduct</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>true</td>
+<td>true</td>
+<td>References the order&#39;s products/order lines</td>
+</tr>
+<tr>
+<td>orderProduct.product</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+<td>The order products&#39; product information</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h3 id='filter-fields'>Filter fields</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Uses Range</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter[id]</td>
+<td>false</td>
+<td>Our ID reference for orders</td>
+</tr>
+<tr>
+<td>filter[externalRef]</td>
+<td>false</td>
+<td>Your own defined external order ref</td>
+</tr>
+<tr>
+<td>filter[createdAt]</td>
+<td>true</td>
+<td>Date when order was created</td>
+</tr>
+<tr>
+<td>filter[deliveryDate]</td>
+<td>true</td>
+<td>Date when order was created</td>
+</tr>
+</tbody></table>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h3 id='sort-fields'>Sort fields</h3>
+
+<p>You can sort with <code>id</code>, <code>createdAt</code> &amp; <code>deliveryDate</code>. Default is <code>sort=-deliveryDate</code> if unspecified</p>
+
+<aside class="notice">
+Many of the terms above are from JSON:API and you can [read more about them here](#json-api)
+</aside>
+
+<p><h2 id='get-a-specific-order'>Get a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">&lt;/span&gt;
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-</blockquote>
+</blockquote></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEMOORDER1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"externalRef"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deliveryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31 00:00:00"</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31 23:59:59"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">oms-api.stockfillertech.com</span><span class="se">\/</span><span class="s2">v1</span><span class="se">\/</span><span class="s2">order</span><span class="se">\/</span><span class="s2">DEMOORDER1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">oms-api.stockfillertech.com</span><span class="se">\/</span><span class="s2">v1</span><span class="se">\/</span><span class="s2">order</span><span class="se">\/</span><span class="s2">DEMOORDER1</span><span class="se">\/</span><span class="s2">relationships</span><span class="se">\/</span><span class="s2">orderProducts"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderProduct"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderProduct"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves a specified order.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+
+<p><code>GET https://oms-api.stockfillertech.com/v1/order/DEMOORDER1</code></p>
+
+<h3 id='attributes'>Attributes</h3>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>externalRef</td>
+<td>string</td>
+<td>Your defined external order ref. <code>null</code> if undefined</td>
+</tr>
+<tr>
+<td>deliveryDate</td>
+<td>string</td>
+<td>The order&#39;s delivery date in the format &quot;YYYY-MM-DD&quot;</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>UTC Date time when the order was created</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>string</td>
+<td>UTC Date time when the order was last modified</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h3 id='relationships'>Relationships</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Direct Relation</th>
+<th>Multiple</th>
+<th><code>include</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderProduct</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>References the order&#39;s products/order lines</td>
+</tr>
+<tr>
+<td>orderProduct.product</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+<td>The order products&#39; product information</td>
+</tr>
+</tbody></table>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Make sure to replace <code>DEMOORDER1</code> with our order reference ID. When relying on <code>externalRef</code>, you must first use it to retrieve our ID</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='json-api'>JSON:API</h1><h2 id='links'><a href="https://jsonapi.org/format/#document-links">Links</a></h2>
-<p>Links to the resources are applied in the json responses. This also includes the pagination logic</p>
-<h2 id='pagination'><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></h2>
-<p>Links to fetch first, last, previous and next set of resources are present in the root &quot;links&quot; key. We use <code>page[offset]</code> and <code>page[limit]</code> for this purpose. <code>page[limit]</code> is <em>not</em> allowed to be any higher than <code>50</code>.</p>
-<h2 id='multiple-resources-response'><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources Response</a></h2>
-<p>When attemping to fetch more than 1 specific resource, they are given as an array in the &quot;data&quot; key</p>
+<h1 id='json-api'>JSON:API</h1>
+<ul>
+<li>##<a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a>
+All resources are presented inside <code>&quot;data&quot;</code> with <code>&quot;type&quot;</code>, <code>&quot;id&quot;</code> strings and potentially with <code>&quot;attributes&quot;</code>, <code>&quot;links&quot;</code> and <code>&quot;relationships&quot;</code> objects. </li>
+<li>##<a href="https://jsonapi.org/format/#document-resource-object-attributes">Attributes</a>
+Attributes are the resource&#39;s defined and presented values as an object inside <code>&quot;data&quot;</code></li>
+<li>##<a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources</a>
+When attemping to fetch more than 1 specific resource, they are given as an array in the &quot;data&quot; key instead of a direct object</li>
+<li>##<a href="https://jsonapi.org/format/#document-resource-object-relationships">Relationships</a>
+Relevant relationships to the resource are presented as it&#39;s own resource object. They are either a direct object or listed resources. They only contain <code>&quot;type&quot;</code> and <code>&quot;id&quot;</code> to be obtain remaining resource data in future calls or by utilizing <code>include</code></li>
+<li>##<a href="https://jsonapi.org/format/#document-links">Links</a>
+The resources have links applied in the json responses. This also includes the pagination logic</li>
+<li>##<a href="https://jsonapi.org/format/#fetching-sorting">Sorting</a>
+Using query string <code>sort</code> you can control the sorting of the resources. Examples:
+
+<ul>
+<li>Sort <code>id</code> by ascending - <code>sort=id</code></li>
+<li>Sort <code>createdAt</code> by descending - <code>sort=-createdAt</code> (Note the prefixed <code>-</code>)</li>
+<li>Sort by both, starting with <code>createdAt</code> - <code>sort=-createdAt,id</code> (Note the separating <code>,</code>)</li>
+</ul></li>
+<li>##<a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a>
+Links to fetch <code>first</code>, <code>last</code>, <code>prev</code>-ious and <code>next</code> set of resources are present in the root <code>&quot;links&quot;</code> object. We use query strings <code>page[offset]</code> and <code>page[limit]</code> for this purpose. <code>page[limit]</code> is <em>not</em> allowed to be any higher than <code>50</code></li>
+<li>##<a href="https://jsonapi.org/format/#fetching-filtering">Filtering</a>
+To filter the resource, you use the query string <code>filter</code>. To obtain an <code>order</code> with a specific <code>externalRef</code>, you can use <code>filter[externalRef]=YOURORDER1</code>. To filter by more than one value, separate them with <code>,</code> the same way done in <code>sort</code>. Although not fully officially supported yet, in order to filter by date ranges. You can for instance use <code>filter[createdAt][gte]=2020-01-01&amp;filter[createdAt][lt]=2021-01-01</code> to filter all resources created during 2020.
+Current range operation keys available are <code>eq</code> (equal to), <code>gt</code> (greater than), <code>lt</code> (lesser than), <code>ge</code> (greater than or equal to) and <code>le</code> (lesser than or equal to). <code>eq</code> can match against several values using <code>,</code> seperator as normal</li>
+<li>##<a href="https://jsonapi.org/format/#fetching-includes">Include</a>
+When fetching multiple resources, you may utilize the query string <code>include</code>. This allows you to do fewer calls when needing <code>&quot;attributes&quot;</code> and <code>&quot;relationships&quot;</code> information on primary resources&#39; relationships. You can include several with a <code>,</code> separator and <code>include=orderProduct.product</code> for instance includes both the resources (<code>orderProduct</code> and <code>product</code>)</li>
+</ul>
+
+<blockquote>
+<p>All query strings using <code>[</code> and <code>]</code> are assumed to be url encoded accordingly. Many clients does this automatically
+When using pagination to fetch multiple pages of resources, we encourage you to sort <code>createdAt</code> by ascending (<code>sort=createdAt</code>) to make sure new resources doesn&#39;t offset the resources</p>
+</blockquote>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.

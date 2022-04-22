@@ -345,7 +345,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/">JSON:API</a> specifications. JSON:API terms will be used throughout the documentation and you can <a href="#json-api">read more about them here</a>.</p>
+<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/">JSON:API</a> specifications. JSON:API terms will be used throughout the documentation and you can <em><a href="#json-api">read more about them here</a></em>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>All your calls must be authorized using:</p>
@@ -490,28 +490,28 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <tr>
 <th>Field</th>
 <th>Uses Range</th>
-<th>Description</th>
+<th>Additional Notes</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>filter[id]</td>
 <td>false</td>
-<td>Our ID reference for orders</td>
+<td>--</td>
 </tr>
 <tr>
 <td>filter[externalRef]</td>
 <td>false</td>
-<td>Your own defined external order ref</td>
+<td>--</td>
 </tr>
 <tr>
 <td>filter[createdAt]</td>
 <td>true</td>
-<td>Date when order was created</td>
+<td>Only accepts format YYYY-MM-DD</td>
 </tr>
 <tr>
 <td>filter[deliveryDate]</td>
 <td>true</td>
-<td>Date when order was created</td>
+<td>Only accepts format YYYY-MM-DD</td>
 </tr>
 </tbody></table>
 
@@ -520,7 +520,7 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <p>You can sort with <code>id</code>, <code>createdAt</code> &amp; <code>deliveryDate</code>. Default is <code>sort=-deliveryDate</code> if unspecified</p>
 
 <aside class="notice">
-Many of the terms above are from JSON:API and you can [read more about them here](#json-api)
+Many of the terms above are from JSON:API and you can <a href="#json-api"><strong>read more about them here</strong></a>
 </aside>
 
 <p><h2 id='get-a-specific-order'>Get a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">&lt;/span&gt;
@@ -634,15 +634,15 @@ Many of the terms above are from JSON:API and you can [read more about them here
 <ul>
 <li>##<a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a>
 All resources are presented inside <code>&quot;data&quot;</code> with <code>&quot;type&quot;</code>, <code>&quot;id&quot;</code> strings and potentially with <code>&quot;attributes&quot;</code>, <code>&quot;links&quot;</code> and <code>&quot;relationships&quot;</code> objects. </li>
-<li>##<a href="https://jsonapi.org/format/#document-resource-object-attributes">Attributes</a>
+<li><em><a href="https://jsonapi.org/format/#document-resource-object-attributes">Attributes</a></em><br>
 Attributes are the resource&#39;s defined and presented values as an object inside <code>&quot;data&quot;</code></li>
-<li>##<a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources</a>
+<li><em><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources</a></em><br>
 When attemping to fetch more than 1 specific resource, they are given as an array in the &quot;data&quot; key instead of a direct object</li>
-<li>##<a href="https://jsonapi.org/format/#document-resource-object-relationships">Relationships</a>
+<li><em><a href="https://jsonapi.org/format/#document-resource-object-relationships">Relationships</a></em><br>
 Relevant relationships to the resource are presented as it&#39;s own resource object. They are either a direct object or listed resources. They only contain <code>&quot;type&quot;</code> and <code>&quot;id&quot;</code> to be obtain remaining resource data in future calls or by utilizing <code>include</code></li>
-<li>##<a href="https://jsonapi.org/format/#document-links">Links</a>
+<li><em><a href="https://jsonapi.org/format/#document-links">Links</a></em><br>
 The resources have links applied in the json responses. This also includes the pagination logic</li>
-<li>##<a href="https://jsonapi.org/format/#fetching-sorting">Sorting</a>
+<li><em><a href="https://jsonapi.org/format/#fetching-sorting">Sorting</a></em><br>
 Using query string <code>sort</code> you can control the sorting of the resources. Examples:
 
 <ul>
@@ -650,12 +650,12 @@ Using query string <code>sort</code> you can control the sorting of the resource
 <li>Sort <code>createdAt</code> by descending - <code>sort=-createdAt</code> (Note the prefixed <code>-</code>)</li>
 <li>Sort by both, starting with <code>createdAt</code> - <code>sort=-createdAt,id</code> (Note the separating <code>,</code>)</li>
 </ul></li>
-<li>##<a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a>
+<li><em><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></em><br>
 Links to fetch <code>first</code>, <code>last</code>, <code>prev</code>-ious and <code>next</code> set of resources are present in the root <code>&quot;links&quot;</code> object. We use query strings <code>page[offset]</code> and <code>page[limit]</code> for this purpose. <code>page[limit]</code> is <em>not</em> allowed to be any higher than <code>50</code></li>
-<li>##<a href="https://jsonapi.org/format/#fetching-filtering">Filtering</a>
+<li><em><a href="https://jsonapi.org/format/#fetching-filtering">Filtering</a></em><br>
 To filter the resource, you use the query string <code>filter</code>. To obtain an <code>order</code> with a specific <code>externalRef</code>, you can use <code>filter[externalRef]=YOURORDER1</code>. To filter by more than one value, separate them with <code>,</code> the same way done in <code>sort</code>. Although not fully officially supported yet, in order to filter by date ranges. You can for instance use <code>filter[createdAt][gte]=2020-01-01&amp;filter[createdAt][lt]=2021-01-01</code> to filter all resources created during 2020.
 Current range operation keys available are <code>eq</code> (equal to), <code>gt</code> (greater than), <code>lt</code> (lesser than), <code>ge</code> (greater than or equal to) and <code>le</code> (lesser than or equal to). <code>eq</code> can match against several values using <code>,</code> seperator as normal</li>
-<li>##<a href="https://jsonapi.org/format/#fetching-includes">Include</a>
+<li><em><a href="https://jsonapi.org/format/#fetching-includes">Include</a></em><br>
 When fetching multiple resources, you may utilize the query string <code>include</code>. This allows you to do fewer calls when needing <code>&quot;attributes&quot;</code> and <code>&quot;relationships&quot;</code> information on primary resources&#39; relationships. You can include several with a <code>,</code> separator and <code>include=orderProduct.product</code> for instance includes both the resources (<code>orderProduct</code> and <code>product</code>)</li>
 </ul>
 
@@ -664,11 +664,7 @@ When fetching multiple resources, you may utilize the query string <code>include
 When using pagination to fetch multiple pages of resources, we encourage you to sort <code>createdAt</code> by ascending (<code>sort=createdAt</code>) to make sure new resources doesn&#39;t offset the resources</p>
 </blockquote>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Stockfiller API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -685,40 +681,24 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Unauthorized -- Your API key is wrong.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources. Please wait before requesting again.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 

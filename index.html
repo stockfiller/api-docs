@@ -632,17 +632,17 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 </blockquote>
 <h1 id='json-api'>JSON:API</h1>
 <ul>
-<li>##<a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a>
+<li><strong><a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a></strong><br>
 All resources are presented inside <code>&quot;data&quot;</code> with <code>&quot;type&quot;</code>, <code>&quot;id&quot;</code> strings and potentially with <code>&quot;attributes&quot;</code>, <code>&quot;links&quot;</code> and <code>&quot;relationships&quot;</code> objects. </li>
-<li><em><a href="https://jsonapi.org/format/#document-resource-object-attributes">Attributes</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#document-resource-object-attributes">Attributes</a></strong><br>
 Attributes are the resource&#39;s defined and presented values as an object inside <code>&quot;data&quot;</code></li>
-<li><em><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#fetching-resources-responses">Multiple Resources</a></strong><br>
 When attemping to fetch more than 1 specific resource, they are given as an array in the &quot;data&quot; key instead of a direct object</li>
-<li><em><a href="https://jsonapi.org/format/#document-resource-object-relationships">Relationships</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#document-resource-object-relationships">Relationships</a></strong><br>
 Relevant relationships to the resource are presented as it&#39;s own resource object. They are either a direct object or listed resources. They only contain <code>&quot;type&quot;</code> and <code>&quot;id&quot;</code> to be obtain remaining resource data in future calls or by utilizing <code>include</code></li>
-<li><em><a href="https://jsonapi.org/format/#document-links">Links</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#document-links">Links</a></strong><br>
 The resources have links applied in the json responses. This also includes the pagination logic</li>
-<li><em><a href="https://jsonapi.org/format/#fetching-sorting">Sorting</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#fetching-sorting">Sorting</a></strong><br>
 Using query string <code>sort</code> you can control the sorting of the resources. Examples:
 
 <ul>
@@ -650,12 +650,12 @@ Using query string <code>sort</code> you can control the sorting of the resource
 <li>Sort <code>createdAt</code> by descending - <code>sort=-createdAt</code> (Note the prefixed <code>-</code>)</li>
 <li>Sort by both, starting with <code>createdAt</code> - <code>sort=-createdAt,id</code> (Note the separating <code>,</code>)</li>
 </ul></li>
-<li><em><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#fetching-pagination">Pagination</a></strong><br>
 Links to fetch <code>first</code>, <code>last</code>, <code>prev</code>-ious and <code>next</code> set of resources are present in the root <code>&quot;links&quot;</code> object. We use query strings <code>page[offset]</code> and <code>page[limit]</code> for this purpose. <code>page[limit]</code> is <em>not</em> allowed to be any higher than <code>50</code></li>
-<li><em><a href="https://jsonapi.org/format/#fetching-filtering">Filtering</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#fetching-filtering">Filtering</a></strong><br>
 To filter the resource, you use the query string <code>filter</code>. To obtain an <code>order</code> with a specific <code>externalRef</code>, you can use <code>filter[externalRef]=YOURORDER1</code>. To filter by more than one value, separate them with <code>,</code> the same way done in <code>sort</code>. Although not fully officially supported yet, in order to filter by date ranges. You can for instance use <code>filter[createdAt][gte]=2020-01-01&amp;filter[createdAt][lt]=2021-01-01</code> to filter all resources created during 2020.
 Current range operation keys available are <code>eq</code> (equal to), <code>gt</code> (greater than), <code>lt</code> (lesser than), <code>ge</code> (greater than or equal to) and <code>le</code> (lesser than or equal to). <code>eq</code> can match against several values using <code>,</code> seperator as normal</li>
-<li><em><a href="https://jsonapi.org/format/#fetching-includes">Include</a></em><br>
+<li><strong><a href="https://jsonapi.org/format/#fetching-includes">Include</a></strong><br>
 When fetching multiple resources, you may utilize the query string <code>include</code>. This allows you to do fewer calls when needing <code>&quot;attributes&quot;</code> and <code>&quot;relationships&quot;</code> information on primary resources&#39; relationships. You can include several with a <code>,</code> separator and <code>include=orderProduct.product</code> for instance includes both the resources (<code>orderProduct</code> and <code>product</code>)</li>
 </ul>
 

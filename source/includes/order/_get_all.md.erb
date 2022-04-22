@@ -1,0 +1,39 @@
+## Get All Orders
+
+
+```shell
+curl "<%= config[:endpoint] %>order" \
+  -H "Accept: application/vnd.api+json"
+  -H "Authorization: Bearer <%= config[:example_token] %>"
+```
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/order/get_all_json.md.erb" %>
+
+This endpoint retrieves all orders paginated.
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>order`
+
+<%= partial "includes/order/get_attributes.md.erb" %>
+
+<%= partial "includes/order/get_relationships.md.erb" %>
+
+### Filter fields
+
+Field | Uses Range | Description
+--------- | ------- | -----------
+filter[id] | false | Our ID reference for orders
+filter[externalRef] | false | Your own defined external order ref
+filter[createdAt] | true | Date when order was created
+filter[deliveryDate] | true | Date when order was created
+
+### Sort fields
+
+You can sort with `id`, `createdAt` & `deliveryDate`. Default is `sort=-deliveryDate` if unspecified
+
+<aside class="notice">
+Many of the terms above are from JSON:API and you can [read more about them here](#json-api)
+</aside>

@@ -1,0 +1,24 @@
+## Get a Specific Order
+
+
+```shell
+curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \
+  -H "Accept: application/vnd.api+json"
+  -H "Authorization: Bearer <%= config[:example_token] %>"
+```
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/order/get_json.md.erb" %>
+
+This endpoint retrieves a specified order.
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>order/<%= config[:example_order] %>`
+
+<%= partial "includes/order/get_attributes.md.erb" %>
+
+<%= partial "includes/order/get_relationships.md.erb" %>
+
+> Make sure to replace `<%= config[:example_order] %>` with our order reference ID. When relying on `externalRef`, you must first use it to retrieve our ID

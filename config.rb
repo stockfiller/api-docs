@@ -67,5 +67,7 @@ set :host, 'oms-api.stockfillertech.com'
 config[:endpoint]
 set :endpoint, 'https://oms-api.stockfillertech.com/v1/'
 config[:endpoint]
+set :example_order, 'DEMOORDER1'
+config[:example_order]
 set :example_token, 'abcd1234-token-example-1234abcd'
 config[:example_token]

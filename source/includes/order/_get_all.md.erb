@@ -23,17 +23,17 @@ This endpoint retrieves all orders paginated.
 
 ### Filter fields
 
-Field | Uses Range | Description
---------- | ------- | -----------
-filter[id] | false | Our ID reference for orders
-filter[externalRef] | false | Your own defined external order ref
-filter[createdAt] | true | Date when order was created
-filter[deliveryDate] | true | Date when order was created
+Field | Uses Range | Additional Notes
+----- | ---------- | ----------------
+filter[id] | false | --
+filter[externalRef] | false | --
+filter[createdAt] | true | Only accepts format YYYY-MM-DD
+filter[deliveryDate] | true | Only accepts format YYYY-MM-DD
 
 ### Sort fields
 
 You can sort with `id`, `createdAt` & `deliveryDate`. Default is `sort=-deliveryDate` if unspecified
 
 <aside class="notice">
-Many of the terms above are from JSON:API and you can [read more about them here](#json-api)
+Many of the terms above are from JSON:API and you can <a href="#json-api"><strong>read more about them here</strong></a>
 </aside>

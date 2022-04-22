@@ -2,25 +2,25 @@
 
 * ##[Resource Object](https://jsonapi.org/format/#document-resource-objects)
   All resources are presented inside `"data"` with `"type"`, `"id"` strings and potentially with `"attributes"`, `"links"` and `"relationships"` objects. 
-* ##[Attributes](https://jsonapi.org/format/#document-resource-object-attributes)
+* *[Attributes](https://jsonapi.org/format/#document-resource-object-attributes)*  
   Attributes are the resource's defined and presented values as an object inside `"data"`
-* ##[Multiple Resources](https://jsonapi.org/format/#fetching-resources-responses)
+* *[Multiple Resources](https://jsonapi.org/format/#fetching-resources-responses)*  
   When attemping to fetch more than 1 specific resource, they are given as an array in the "data" key instead of a direct object
-* ##[Relationships](https://jsonapi.org/format/#document-resource-object-relationships)
+* *[Relationships](https://jsonapi.org/format/#document-resource-object-relationships)*  
   Relevant relationships to the resource are presented as it's own resource object. They are either a direct object or listed resources. They only contain `"type"` and `"id"` to be obtain remaining resource data in future calls or by utilizing `include`
-* ##[Links](https://jsonapi.org/format/#document-links)
+* *[Links](https://jsonapi.org/format/#document-links)*  
   The resources have links applied in the json responses. This also includes the pagination logic
-* ##[Sorting](https://jsonapi.org/format/#fetching-sorting)
+* *[Sorting](https://jsonapi.org/format/#fetching-sorting)*  
   Using query string `sort` you can control the sorting of the resources. Examples:
   * Sort `id` by ascending - `sort=id`
   * Sort `createdAt` by descending - `sort=-createdAt` (Note the prefixed `-`)
   * Sort by both, starting with `createdAt` - `sort=-createdAt,id` (Note the separating `,`)
-* ##[Pagination](https://jsonapi.org/format/#fetching-pagination)
+* *[Pagination](https://jsonapi.org/format/#fetching-pagination)*  
   Links to fetch `first`, `last`, `prev`-ious and `next` set of resources are present in the root `"links"` object. We use query strings `page[offset]` and `page[limit]` for this purpose. `page[limit]` is *not* allowed to be any higher than `50`
-* ##[Filtering](https://jsonapi.org/format/#fetching-filtering)
+* *[Filtering](https://jsonapi.org/format/#fetching-filtering)*  
   To filter the resource, you use the query string `filter`. To obtain an `order` with a specific `externalRef`, you can use `filter[externalRef]=YOURORDER1`. To filter by more than one value, separate them with `,` the same way done in `sort`. Although not fully officially supported yet, in order to filter by date ranges. You can for instance use `filter[createdAt][gte]=2020-01-01&filter[createdAt][lt]=2021-01-01` to filter all resources created during 2020.
   Current range operation keys available are `eq` (equal to), `gt` (greater than), `lt` (lesser than), `ge` (greater than or equal to) and `le` (lesser than or equal to). `eq` can match against several values using `,` seperator as normal
-* ##[Include](https://jsonapi.org/format/#fetching-includes)
+* *[Include](https://jsonapi.org/format/#fetching-includes)*  
   When fetching multiple resources, you may utilize the query string `include`. This allows you to do fewer calls when needing `"attributes"` and `"relationships"` information on primary resources' relationships. You can include several with a `,` separator and `include=orderProduct.product` for instance includes both the resources (`orderProduct` and `product`)
 
 > All query strings using `[` and `]` are assumed to be url encoded accordingly. Many clients does this automatically

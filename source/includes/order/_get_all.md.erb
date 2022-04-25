@@ -2,8 +2,8 @@
 
 
 ```shell
-curl "<%= config[:endpoint] %>order" \
-  -H "Accept: application/vnd.api+json" \
+curl "<%= config[:endpoint] %>order" \\
+  -H "Accept: application/vnd.api+json" \\
   -H "Authorization: Bearer <%= config[:example_token] %>"
 ```
 

@@ -1,8 +1,8 @@
 ### Attributes
 
-Field | Type | Description
------ | ---- | -----------
-externalRef | string | Your defined external order ref. `null` if undefined
-deliveryDate | string | The order's delivery date in the format "YYYY-MM-DD"
-createdAt | string | UTC Date time when the order was created
-updatedAt | string | UTC Date time when the order was last modified
+Field | Type | Modifiable | Description
+----- | ---- | ---------- | -----------
+externalRef | string | true | Your defined external order ref. `null` if undefined
+deliveryDate | string | true |The order's delivery date in the format "YYYY-MM-DD"
+createdAt | string | false | UTC Date time when the order was created
+updatedAt | string | false | UTC Date time when the order was last modified

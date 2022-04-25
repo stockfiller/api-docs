@@ -2,11 +2,11 @@
 
 
 ```shell
-curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \
-  -X PATCH \
-  -H "Accept: application/vnd.api+json" \
-  -H "Authorization: Bearer <%= config[:example_token] %>" \
-  -H "Content-Type: application/vnd.api+json" \
+curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \\
+  -X PATCH \\
+  -H "Accept: application/vnd.api+json" \\
+  -H "Authorization: Bearer <%= config[:example_token] %>" \\
+  -H "Content-Type: application/vnd.api+json" \\
   -d '{
         "data": {
           "type": "order", 
@@ -22,8 +22,20 @@ curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \
 
 This endpoint updates and upon success retrieves a specified order.
 
+<aside class="notice">
+When sending json data, basically when not using the GET method, make sure to include `Content-Type: application/vnd.api+json`.
+</aside>
+
 ### HTTP Request
 
 `PATCH <%= config[:endpoint] %>order/<%= config[:example_order] %>`
+
+<%= partial "includes/order/get_attributes.md.erb" %>
+
+Only Modifiable attributes can be sent to this endpoint. 
+
+### Relationships
+
+Currently we do not support adding or removing relationships to `order`. You can however `PATCH` relevant `orderProduct` resource in separate calls.
 
 

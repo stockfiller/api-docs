@@ -10,7 +10,7 @@ curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>?include=orderP
 
 <%= partial "includes/order/get_example_include_json.md.erb" %>
 
-When using for instance `include=orderProduct.product`, the response will append an `"included"` array featuring both `orderProduct` and it's relationship of `product` related to fetched `order`. The same logic will be applied both when fetching a specific or several resources. 
+When using for instance `include=orderProduct.product`, the response will append an `"included"` array featuring both `orderProduct` and it's relationship of `product` related to fetched `order`. These resources has `"attributes"` and `"relationships"` as if they were fetched specifically. The same logic will be applied both when fetching a specific or several resources. 
 
 This is a structure enforced by the [JSON:API](#json-api) specifications to avoid repeating the same resource several times in an response. However this might also requires some mapping on the client side. One approach is to map `"type"` as object key with `"id"` as object key inside that and access a resource like `included['product']['2']`. 
 

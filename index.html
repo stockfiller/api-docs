@@ -374,8 +374,8 @@ curl <span class="s2">"https://oms-api.stockfillertech.com/v1/example"</span> <s
 You must replace <code>abcd1234-token-example-1234abcd</code> with your given personal API key.
 </aside>
 <h1 id='orders'>Orders</h1>
-<p><h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order&quot;</span> <span class="se">&lt;/span&gt;
-  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">&lt;/span&gt;
+<p><h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
@@ -441,27 +441,32 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <tr>
 <th>Field</th>
 <th>Type</th>
+<th>Modifiable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>externalRef</td>
 <td>string</td>
+<td>true</td>
 <td>Your defined external order ref. <code>null</code> if undefined</td>
 </tr>
 <tr>
 <td>deliveryDate</td>
 <td>string</td>
+<td>true</td>
 <td>The order&#39;s delivery date in the format &quot;YYYY-MM-DD&quot;</td>
 </tr>
 <tr>
 <td>createdAt</td>
 <td>string</td>
+<td>false</td>
 <td>UTC Date time when the order was created</td>
 </tr>
 <tr>
 <td>updatedAt</td>
 <td>string</td>
+<td>false</td>
 <td>UTC Date time when the order was last modified</td>
 </tr>
 </tbody></table>
@@ -589,27 +594,32 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 <tr>
 <th>Field</th>
 <th>Type</th>
+<th>Modifiable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>externalRef</td>
 <td>string</td>
+<td>true</td>
 <td>Your defined external order ref. <code>null</code> if undefined</td>
 </tr>
 <tr>
 <td>deliveryDate</td>
 <td>string</td>
+<td>true</td>
 <td>The order&#39;s delivery date in the format &quot;YYYY-MM-DD&quot;</td>
 </tr>
 <tr>
 <td>createdAt</td>
 <td>string</td>
+<td>false</td>
 <td>UTC Date time when the order was created</td>
 </tr>
 <tr>
 <td>updatedAt</td>
 <td>string</td>
+<td>false</td>
 <td>UTC Date time when the order was last modified</td>
 </tr>
 </tbody></table>
@@ -645,8 +655,8 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <code>externalRef</code>, you must first use it to retrieve our ID.
 </aside>
 
-<p><h2 id='get-example-using-include'>Get Example Using <code>include</code></h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1?include=orderProduct.product&quot;</span> <span class="se">&lt;/span&gt;
-  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">&lt;/span&gt;
+<p><h2 id='get-example-using-include'>Get Example Using <code>include</code></h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1?include=orderProduct.product&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
@@ -690,13 +700,15 @@ Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <co
 
 <p>This is a structure enforced by the <a href="#json-api">JSON:API</a> specifications to avoid repeating the same resource several times in an response. However this might also requires some mapping on the client side. One approach is to map <code>&quot;type&quot;</code> as object key with <code>&quot;id&quot;</code> as object key inside that and access a resource like <code>included[&#39;product&#39;][&#39;2&#39;]</code>. </p>
 
+<p>Apart from using <code>.</code> to fetch deeper relationships, you can as mentioned fetch multiple by seperating with <code>,</code>.</p>
+
 <p>The obvious reason to utilize <code>include</code> is to avoid doing a bunch of follow up requests to complete the relationships data. Avoid using it however when the extra data is irrelevant, since it will increase response time. </p>
 
-<p><h2 id='update-a-specific-order'>Update a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">&lt;/span&gt;
-  <span class="nt">-X</span> PATCH <span class="se">&lt;/span&gt;
-  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">&lt;/span&gt;
-  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">&lt;/span&gt;
-  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">&lt;/span&gt;
+<p><h2 id='update-a-specific-order'>Update a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">&#39;{
         &quot;data&quot;: {
           &quot;type&quot;: &quot;order&quot;, 
@@ -713,9 +725,55 @@ Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <co
 
 <p>This endpoint updates and upon success retrieves a specified order.</p>
 
+<aside class="notice">
+When sending json data, basically when not using the GET method, make sure to include `Content-Type: application/vnd.api+json`.
+</aside>
+
 <h3 id='http-request'>HTTP Request</h3>
 
 <p><code>PATCH https://oms-api.stockfillertech.com/v1/order/DEMOORDER1</code></p>
+
+<h3 id='attributes'>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>externalRef</td>
+<td>string</td>
+<td>true</td>
+<td>Your defined external order ref. <code>null</code> if undefined</td>
+</tr>
+<tr>
+<td>deliveryDate</td>
+<td>string</td>
+<td>true</td>
+<td>The order&#39;s delivery date in the format &quot;YYYY-MM-DD&quot;</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>false</td>
+<td>UTC Date time when the order was created</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>string</td>
+<td>false</td>
+<td>UTC Date time when the order was last modified</td>
+</tr>
+</tbody></table>
+
+<p>Only Modifiable attributes can be sent to this endpoint. </p>
+
+<h3 id='relationships'>Relationships</h3>
+
+<p>Currently we do not support adding or removing relationships to <code>order</code>. You can however <code>PATCH</code> relevant <code>orderProduct</code> resource in separate calls.</p>
 <h1 id='json-api'>JSON:API</h1>
 <ul>
 <li><strong><a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a></strong><br>

@@ -1,0 +1,29 @@
+## Update a Specific Order
+
+
+```shell
+curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \
+  -X PATCH \
+  -H "Accept: application/vnd.api+json" \
+  -H "Authorization: Bearer <%= config[:example_token] %>" \
+  -H "Content-Type: application/vnd.api+json" \
+  -d '{
+        "data": {
+          "type": "order", 
+          "id": "<%= config[:example_order] %>", 
+          "attributes": {
+            "deliveryDate": "2020-01-02"
+          }
+        }
+      }'
+```
+
+> If successful, the above command returns the modified resource in the same structure
+
+This endpoint updates and upon success retrieves a specified order.
+
+### HTTP Request
+
+`PATCH <%= config[:endpoint] %>order/<%= config[:example_order] %>`
+
+

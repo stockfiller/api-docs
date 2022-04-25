@@ -1,32 +1,37 @@
 ```json
 {
-  "type": "order",
-  "id": "<%= config[:example_order] %>",
-  "attributes": {
-    "externalRef": null,
-    "deliveryDate": "2020-01-01",
-    "createdAt": "2019-12-31 00:00:00"
-    "updatedAt": "2019-12-31 23:59:59"
-  },
-  "links": {
-    "self": "http:\/\/<%= config[:host] %>\/v1\/order\/<%= config[:example_order] %>"
-  },
-  "relationships": {
-    "orderProducts": {
-      "links": {
-        "self": "http:\/\/<%= config[:host] %>\/v1\/order\/<%= config[:example_order] %>\/relationships\/orderProducts"
-      },
-      "data": [
-        {
-          "type": "orderProduct",
-          "id": "1"
+  "data": {
+    "type": "order",
+    "id": "<%= config[:example_order] %>",
+    "attributes": {
+      "externalRef": null,
+      "deliveryDate": "2020-01-01",
+      "createdAt": "2019-12-31 00:00:00"
+      "updatedAt": "2019-12-31 23:59:59"
+    },
+    "links": {
+      "self": "http:\/\/<%= config[:host] %>\/v1\/order\/<%= config[:example_order] %>"
+    },
+    "relationships": {
+      "orderProducts": {
+        "links": {
+          "self": "http:\/\/<%= config[:host] %>\/v1\/order\/<%= config[:example_order] %>\/relationships\/orderProducts"
         },
-        {
-          "type": "orderProduct",
-          "id": "2"
-        }
-      ]
+        "data": [
+          {
+            "type": "orderProduct",
+            "id": "1"
+          },
+          {
+            "type": "orderProduct",
+            "id": "2"
+          }
+        ]
+      }
     }
-  }
+  },
+  "included": [
+    ...
+  ]
 }
 ```

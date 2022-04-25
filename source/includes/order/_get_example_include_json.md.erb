@@ -1,0 +1,69 @@
+```json
+...,
+"included": [
+    {
+      "type": "orderProduct",
+      "id": "1",
+      "attributes": {
+        "quantityOrdered": 2,
+        "totalOrdered": 2,
+        "totalDelivered": 2
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/orderProduct\/1"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "2"
+          }
+        }
+      }
+    },
+    {
+      "type": "orderProduct",
+      "id": "2",
+      "attributes": {
+        "quantityOrdered": 1,
+        "totalOrdered": 1,
+        "totalDelivered": 1
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/orderProduct\/2"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "3"
+          }
+        }
+      }
+    },
+    {
+      "type": "product",
+      "id": "2",
+      "attributes": {
+        "sku": "ART001",
+        "ean": "7350123456789",
+        "name": "Milk 6 Pack"
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/product\/2"
+      }
+    },
+    {
+      "type": "product",
+      "id": "3",
+      "attributes": {
+        "sku": "ART002",
+        "ean": null,
+        "name": "Cheese 200g"
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/product\/3"
+      }
+    }
+...
+```

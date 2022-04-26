@@ -342,13 +342,13 @@
                     <a href="#get-a-specific-order-product" class="toc-h2 toc-link" data-title="Get a Specific Order Product">Get a Specific Order Product</a>
                   </li>
                   <li>
-                    <a href="#update-a-specific-order-product" class="toc-h2 toc-link" data-title="Update a Specific Order Product">Update a Specific Order Product</a>
+                    <a href="#create-a-specific-order-product" class="toc-h2 toc-link" data-title="Create a Specific Order Product">Create a Specific Order Product</a>
                   </li>
                   <li>
                     <a href="#update-a-specific-order-product" class="toc-h2 toc-link" data-title="Update a Specific Order Product">Update a Specific Order Product</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-order-product" class="toc-h2 toc-link" data-title="Get a Specific Order Product">Get a Specific Order Product</a>
+                    <a href="#remove-a-specific-order-product" class="toc-h2 toc-link" data-title="Remove a Specific Order Product">Remove a Specific Order Product</a>
                   </li>
               </ul>
           </li>
@@ -890,7 +890,7 @@ When sending json data, basically when not using the GET method, make sure to in
 </tr>
 </tbody></table>
 
-<p><h2 id='update-a-specific-order-product'>Update a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct&quot;</span> <span class="se">\</span>
+<p><h2 id='create-a-specific-order-product'>Create a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct&quot;</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
@@ -1027,7 +1027,7 @@ When sending json data, basically when not using the GET method, make sure to in
 
 <p>Currently we do not support adding or removing relationships to <code>orderProduct</code>.</p>
 
-<p><h2 id='get-a-specific-order-product'>Get a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+<p><h2 id='remove-a-specific-order-product'>Remove a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>

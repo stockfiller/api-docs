@@ -1,0 +1,24 @@
+## Get a Specific Product
+
+
+```shell
+curl "<%= config[:endpoint] %>product/<%= config[:example_product] %>" \\
+  -H "Accept: application/vnd.api+json" \\
+  -H "Authorization: Bearer <%= config[:example_token] %>"
+```
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/product/get_json.md.erb" %>
+
+This endpoint retrieves a specified `product`.
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>product/<%= config[:example_product] %>`
+
+<%= partial "includes/product/get_attributes.md.erb" %>
+
+### Relationships
+
+Currently no relationships are presented for `product`

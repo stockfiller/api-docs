@@ -303,7 +303,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-53a28de9.png" class="logo" alt="" />
+      <img src="images/logo-f6c3c608.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -336,6 +336,23 @@
               </ul>
           </li>
           <li>
+            <a href="#order-products" class="toc-h1 toc-link" data-title="Order Products">Order Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-specific-order-product" class="toc-h2 toc-link" data-title="Get a Specific Order Product">Get a Specific Order Product</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-specific-order-product" class="toc-h2 toc-link" data-title="Update a Specific Order Product">Update a Specific Order Product</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-specific-order-product" class="toc-h2 toc-link" data-title="Update a Specific Order Product">Update a Specific Order Product</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-order-product" class="toc-h2 toc-link" data-title="Get a Specific Order Product">Get a Specific Order Product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#json-api" class="toc-h1 toc-link" data-title="JSON:API">JSON:API</a>
           </li>
           <li>
@@ -351,7 +368,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/">JSON:API</a> specifications. JSON:API terms will be used throughout the documentation and you can <em><a href="#json-api">read more about them here</a></em>.</p>
+<p>This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/" target="_blank"><strong>JSON:API</strong></a> specifications. <strong>JSON:API</strong> terms will be used throughout the documentation and you can <em><a href="#json-api">read more about them here</a></em>.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>All your calls must be authorized using:</p>
@@ -492,7 +509,7 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <tr>
 <td>orderProduct.product</td>
 <td>false</td>
-<td>true</td>
+<td>false</td>
 <td>true</td>
 <td>The order products&#39; product information</td>
 </tr>
@@ -582,7 +599,7 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
-<p>This endpoint retrieves a specified order.</p>
+<p>This endpoint retrieves a specified <code>order</code>.</p>
 
 <h3 id='http-request'>HTTP Request</h3>
 
@@ -645,7 +662,7 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 <tr>
 <td>orderProduct.product</td>
 <td>false</td>
-<td>true</td>
+<td>false</td>
 <td>true</td>
 <td>The order products&#39; product information</td>
 </tr>
@@ -700,7 +717,7 @@ Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <co
 
 <p>This is a structure enforced by the <a href="#json-api">JSON:API</a> specifications to avoid repeating the same resource several times in an response. However this might also requires some mapping on the client side. One approach is to map <code>&quot;type&quot;</code> as object key with <code>&quot;id&quot;</code> as object key inside that and access a resource like <code>included[&#39;product&#39;][&#39;2&#39;]</code>. </p>
 
-<p>Apart from using <code>.</code> to fetch deeper relationships, you can as mentioned fetch multiple by seperating with <code>,</code>.</p>
+<p>Apart from using <code>.</code> to fetch deeper relationships, you can as mentioned fetch multiple by separating them with <code>,</code>.</p>
 
 <p>The obvious reason to utilize <code>include</code> is to avoid doing a bunch of follow up requests to complete the relationships data. Avoid using it however when the extra data is irrelevant, since it will increase response time. </p>
 
@@ -720,10 +737,10 @@ Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <co
       }&#39;</span>
 </code></pre></div>
 <blockquote>
-<p>If successful, the above command returns the modified resource in the same structure</p>
+<p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
 </blockquote></p>
 
-<p>This endpoint updates and upon success retrieves a specified order.</p>
+<p>This endpoint updates and upon success retrieves a specified <code>order</code>.</p>
 
 <aside class="notice">
 When sending json data, basically when not using the GET method, make sure to include `Content-Type: application/vnd.api+json`.
@@ -769,11 +786,261 @@ When sending json data, basically when not using the GET method, make sure to in
 </tr>
 </tbody></table>
 
-<p>Only Modifiable attributes can be sent to this endpoint. </p>
+<p>Only <strong>Modifiable</strong> attributes can be sent to this endpoint. </p>
 
 <h3 id='relationships'>Relationships</h3>
 
 <p>Currently we do not support adding or removing relationships to <code>order</code>. You can however <code>PATCH</code> relevant <code>orderProduct</code> resource in separate calls.</p>
+<h1 id='order-products'>Order Products</h1>
+<p><h2 id='get-a-specific-order-product'>Get a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderProduct"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantityOrdered"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"totalOrdered"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"totalDelivered"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:</span><span class="se">\/\/</span><span class="s2">oms-api.stockfillertech.com</span><span class="se">\/</span><span class="s2">v1</span><span class="se">\/</span><span class="s2">orderProduct</span><span class="se">\/</span><span class="s2">1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p>This endpoint retrieves a specified <code>orderProduct</code>.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>GET https://oms-api.stockfillertech.com/v1/orderProduct/1</code></p>
+
+<h3 id='attributes'>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantityOrdered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Order product&#39;s initial quantity</td>
+</tr>
+<tr>
+<td>totalOrdered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Total amount initially ordered</td>
+</tr>
+<tr>
+<td>totalDelivered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Total amount delivered</td>
+</tr>
+</tbody></table>
+
+<h3 id='relationships'>Relationships</h3>
+
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Direct Relation</th>
+<th>Multiple</th>
+<th>Can <code>include</code></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>The order this resourse belongs to</td>
+</tr>
+<tr>
+<td>product</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>The order products&#39; product information</td>
+</tr>
+</tbody></table>
+
+<p><h2 id='update-a-specific-order-product'>Update a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">&#39;{
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;orderProduct&quot;, 
+          &quot;attributes&quot;: {
+            &quot;totalOrdered&quot;: 5
+          }
+        }
+      }&#39;</span>
+</code></pre></div>
+<blockquote>
+<p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
+</blockquote></p>
+
+<p>This endpoint creates and retrieves a specified <code>orderProduct</code>.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>POST https://oms-api.stockfillertech.com/v1/orderProduct</code></p>
+
+<h3 id='attributes'>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.attributes.quantityOrdered</td>
+<td>numeric</td>
+<td>true*</td>
+<td>Order product&#39;s initial quantity. Required if totalOrdered is missing</td>
+</tr>
+<tr>
+<td>data.attributes.totalOrdered</td>
+<td>numeric</td>
+<td>true*</td>
+<td>Total amount initially ordered. Required if quantityOrdered is missing</td>
+</tr>
+<tr>
+<td>data.attributes.totalDelivered</td>
+<td>numeric</td>
+<td>false</td>
+<td>Total amount delivered</td>
+</tr>
+<tr>
+<td>data.relationships.order.data.type</td>
+<td>string</td>
+<td>true</td>
+<td>&quot;order&quot;</td>
+</tr>
+<tr>
+<td>data.relationships.order.data.id</td>
+<td>string</td>
+<td>true</td>
+<td>Order resource ID</td>
+</tr>
+<tr>
+<td>data.relationships.order.product.type</td>
+<td>string</td>
+<td>true</td>
+<td>&quot;product&quot;</td>
+</tr>
+<tr>
+<td>data.relationships.order.product.id</td>
+<td>string</td>
+<td>true</td>
+<td>Order resource ID</td>
+</tr>
+</tbody></table>
+
+<p><h2 id='update-a-specific-order-product'>Update a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">&#39;{
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;orderProduct&quot;, 
+          &quot;id&quot;: &quot;1&quot;, 
+          &quot;attributes&quot;: {
+            &quot;totalDelivered&quot;: 5
+          }
+        }
+      }&#39;</span>
+</code></pre></div>
+<blockquote>
+<p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
+</blockquote></p>
+
+<p>This endpoint updates and upon success retrieves a specified <code>orderProduct</code>.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>PATCH https://oms-api.stockfillertech.com/v1/orderProduct/1</code></p>
+
+<h3 id='attributes'>Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Modifiable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantityOrdered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Order product&#39;s initial quantity</td>
+</tr>
+<tr>
+<td>totalOrdered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Total amount initially ordered</td>
+</tr>
+<tr>
+<td>totalDelivered</td>
+<td>numeric</td>
+<td>true</td>
+<td>Total amount delivered</td>
+</tr>
+</tbody></table>
+
+<h3 id='relationships'>Relationships</h3>
+
+<p>Currently we do not support adding or removing relationships to <code>orderProduct</code>.</p>
+
+<p><h2 id='get-a-specific-order-product'>Get a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns will just return Status Code 204 upon success</p>
+</blockquote></p>
+
+<p>This endpoint removes a specified <code>orderProduct</code>.</p>
+
+<h3 id='http-request'>HTTP Request</h3>
+
+<p><code>DELETE https://oms-api.stockfillertech.com/v1/orderProduct/1</code></p>
 <h1 id='json-api'>JSON:API</h1>
 <ul>
 <li><strong><a href="https://jsonapi.org/format/#document-resource-objects">Resource Object</a></strong><br>

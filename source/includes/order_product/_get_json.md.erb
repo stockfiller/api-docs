@@ -1,0 +1,27 @@
+```json
+{
+  "data": {
+    "type": "orderProduct",
+    "id": "<%= config[:example_order_product] %>",
+    "attributes": {
+      "quantityOrdered": 3,
+      "totalOrdered": 3,
+      "totalDelivered": 2
+    },
+    "links": {
+      "self": "http:\/\/<%= config[:host] %>\/v1\/orderProduct\/<%= config[:example_order_product] %>"
+    },
+    "relationships": {
+      "product": {
+        "data": {
+          "type": "product",
+          "id": "<%= config[:example_product] %>"
+        }
+      }
+    }
+  },
+  "included": [
+    ...
+  ]
+}
+```

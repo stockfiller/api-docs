@@ -1,0 +1,33 @@
+## Update a Specific Order Product
+
+
+```shell
+curl "<%= config[:endpoint] %>orderProduct/<%= config[:example_order_product] %>" \\
+  -X PATCH \\
+  -H "Accept: application/vnd.api+json" \\
+  -H "Authorization: Bearer <%= config[:example_token] %>" \\
+  -H "Content-Type: application/vnd.api+json" \\
+  -d '{
+        "data": {
+          "type": "orderProduct", 
+          "id": "<%= config[:example_order_product] %>", 
+          "attributes": {
+            "totalDelivered": 5
+          }
+        }
+      }'
+```
+
+> If successful, the above command returns the modified resource in the same structure as `GET`
+
+This endpoint updates and upon success retrieves a specified `orderProduct`.
+
+### HTTP Request
+
+`PATCH <%= config[:endpoint] %>orderProduct/<%= config[:example_order_product] %>`
+
+<%= partial "includes/order_product/get_attributes.md.erb" %>
+
+### Relationships
+
+Currently we do not support adding or removing relationships to `orderProduct`.

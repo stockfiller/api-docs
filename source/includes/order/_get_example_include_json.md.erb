@@ -3,14 +3,14 @@
 "included": [
     {
       "type": "orderProduct",
-      "id": "1",
+      "id": "<%= config[:example_order_product] %>",
       "attributes": { ... },
       "links": { ... },
       "relationships": {
         "product": {
           "data": {
             "type": "product",
-            "id": "2"
+            "id": "<%= config[:example_product] %>"
           }
         }
       }

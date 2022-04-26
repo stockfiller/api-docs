@@ -23,7 +23,7 @@ meta:
 
 # Introduction
 
-This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on [JSON:API](https://jsonapi.org/) specifications. JSON:API terms will be used throughout the documentation and you can *[read more about them here](#json-api)*.
+This is the Stockfiller API used to fetch and maintain orders and their underlying products. This REST API is based on <a href="https://jsonapi.org/" target="_blank"><strong>JSON:API</strong></a> specifications. **JSON:API** terms will be used throughout the documentation and you can *[read more about them here](#json-api)*.
 
 # Authentication
 
@@ -56,3 +56,13 @@ You must replace <code><%= config[:example_token] %></code> with your given pers
 <%= partial "includes/order/get_example_include.md.erb" %>
 
 <%= partial "includes/order/patch.md.erb" %>
+
+# Order Products
+
+<%= partial "includes/order_product/get.md.erb" %>
+
+<%= partial "includes/order_product/post.md.erb" %>
+
+<%= partial "includes/order_product/patch.md.erb" %>
+
+<%= partial "includes/order_product/delete.md.erb" %>

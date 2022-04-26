@@ -1,0 +1,17 @@
+## Get a Specific Order Product
+
+
+```shell
+curl "<%= config[:endpoint] %>orderProduct/<%= config[:example_order_product] %>" \\
+  -X DELETE \\
+  -H "Accept: application/vnd.api+json" \\
+  -H "Authorization: Bearer <%= config[:example_token] %>"
+```
+
+> The above command returns will just return Status Code 204 upon success
+
+This endpoint removes a specified `orderProduct`.
+
+### HTTP Request
+
+`DELETE <%= config[:endpoint] %>orderProduct/<%= config[:example_order_product] %>`

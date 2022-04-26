@@ -1,0 +1,11 @@
+### Attributes
+
+Field | Type | Required | Description
+----- | ---- | ---------- | -----------
+data.attributes.quantityOrdered | numeric | true* | Order product's initial quantity. Required if totalOrdered is missing
+data.attributes.totalOrdered | numeric | true* | Total amount initially ordered. Required if quantityOrdered is missing
+data.attributes.totalDelivered | numeric | false | Total amount delivered
+data.relationships.order.data.type | string | true | "order"
+data.relationships.order.data.id | string | true | Order resource ID
+data.relationships.order.product.type | string | true | "product"
+data.relationships.order.product.id | string | true | Order resource ID

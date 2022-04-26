@@ -18,9 +18,9 @@ curl "<%= config[:endpoint] %>order/<%= config[:example_order] %>" \\
       }'
 ```
 
-> If successful, the above command returns the modified resource in the same structure
+> If successful, the above command returns the modified resource in the same structure as `GET`
 
-This endpoint updates and upon success retrieves a specified order.
+This endpoint updates and upon success retrieves a specified `order`.
 
 <aside class="notice">
 When sending json data, basically when not using the GET method, make sure to include `Content-Type: application/vnd.api+json`.
@@ -32,7 +32,7 @@ When sending json data, basically when not using the GET method, make sure to in
 
 <%= partial "includes/order/get_attributes.md.erb" %>
 
-Only Modifiable attributes can be sent to this endpoint. 
+Only **Modifiable** attributes can be sent to this endpoint. 
 
 ### Relationships
 

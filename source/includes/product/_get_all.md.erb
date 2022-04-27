@@ -1,0 +1,32 @@
+## Get All Products
+
+
+```shell
+curl "<%= config[:endpoint] %>product" \\
+  -H "Accept: application/vnd.api+json" \\
+  -H "Authorization: Bearer <%= config[:example_token] %>"
+```
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/product/get_all_json.md.erb" %>
+
+This endpoint retrieves all products paginated.
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>product`
+
+<%= partial "includes/product/get_attributes.md.erb" %>
+
+<%= partial "includes/product/get_relationships.md.erb" %>
+
+### Filter fields
+
+Field | Uses Range | Additional Notes
+----- | ---------- | ----------------
+filter[sku] | false | Product SKU
+
+### Sort fields
+
+You can sort with `id` & `sku`. Default is `sort=sku` if unspecified.

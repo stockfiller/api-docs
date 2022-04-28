@@ -1,5 +1,24 @@
 ## Create Order Product Example
 
+```json
+...,
+"relationships": {
+  "order": {
+    "data": {
+      "type": "order",
+      "id": "OURREF001"
+    }
+  },
+  "product": {
+    "data": {
+      "type": "product",
+      "id": "3"
+    }
+  }
+}
+...
+```
+
 When you need to add a new product to an order, some extra steps might be required to obtain all relevant IDs. Here's an example on the steps required. 
 
 ### When missing `order` id
@@ -12,19 +31,5 @@ The most typical way to identify a product is using the `sku`. To retrieve our `
 
 ### Connecting the new `orderProduct`
 
-```json
-...,
-"relationships": {
-  "order": {
-    "type": "order",
-    "id": "OURREF001"
-  },
-  "product": {
-    "type": "product",
-    "id": "3"
-  }
-}
-...
-```
 
 When creating the new `orderProduct`, apart from the attributes, you also need to define the `order` and `product` relationships. You must have access to both these resources, and it will throw an error if you attempt to insert a `product` that's already connected to the `order`.

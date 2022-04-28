@@ -12,6 +12,20 @@ curl "<%= config[:endpoint] %>orderProduct" \\
           "type": "orderProduct", 
           "attributes": {
             "totalOrdered": 5
+          },
+          "relationships": {
+            "order": {
+              "data": {
+                "type": "order",
+                "id": "<%= config[:example_order] %>"
+              }
+            },
+            "product": {
+              "data": {
+                "type": "product",
+                "id": "<%= config[:example_product] %>"
+              }
+            }
           }
         }
       }'

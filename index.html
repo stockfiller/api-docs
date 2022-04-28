@@ -983,13 +983,13 @@ When sending json data, basically when not using the GET method, make sure to in
 <td>Order resource ID</td>
 </tr>
 <tr>
-<td>data.relationships.order.product.type</td>
+<td>data.relationships.product.data.type</td>
 <td>string</td>
 <td>true</td>
 <td>&quot;product&quot;</td>
 </tr>
 <tr>
-<td>data.relationships.order.product.id</td>
+<td>data.relationships.product.data.id</td>
 <td>string</td>
 <td>true</td>
 <td>Order resource ID</td>
@@ -1155,7 +1155,7 @@ When sending json data, basically when not using the GET method, make sure to in
 <td>ean</td>
 <td>string</td>
 <td>false</td>
-<td>Product&#39;s EAN</td>
+<td>Product&#39;s EAN. Can be <code>null</code></td>
 </tr>
 <tr>
 <td>name</td>
@@ -1239,7 +1239,7 @@ When sending json data, basically when not using the GET method, make sure to in
 <td>ean</td>
 <td>string</td>
 <td>false</td>
-<td>Product&#39;s EAN</td>
+<td>Product&#39;s EAN. Can be <code>null</code></td>
 </tr>
 <tr>
 <td>name</td>

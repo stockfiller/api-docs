@@ -1,0 +1,26 @@
+```json
+{
+  "links": {
+    "self": "http:\/\/<%= config[:host] %>\/v1\/product",
+    "first": "http:\/\/<%= config[:host] %>\/v1\/product?page%5Boffset%5D=0&page%5Blimit%5D=20&sort=id",
+    "last": "http:\/\/<%= config[:host] %>\/v1\/product?page%5Boffset%5D=980&page%5Blimit%5D=20&sort=id",
+    "prev": null,
+    "next": "http:\/\/<%= config[:host] %>\/v1\/product?page%5Boffset%5D=20&page%5Blimit%5D=20&sort=id"
+  },
+  "data": [
+    {
+      "type": "product",
+      "id": "<%= config[:example_product] %>",
+      "attributes": {
+        "sku": "ART001",
+        "ean": "5012345678900",
+        "name": "Milk 12-pack"
+      },
+      "links": {
+        "self": "http:\/\/<%= config[:host] %>\/v1\/product\/<%= config[:example_product] %>"
+      }
+    },
+    ...
+  ]
+}
+```

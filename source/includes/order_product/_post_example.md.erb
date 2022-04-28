@@ -1,0 +1,30 @@
+## Create Order Product Example
+
+When you need to add a new product to an order, some extra steps might be required to obtain all relevant IDs. Here's an example on the steps required. 
+
+### When missing `order` id
+
+In the case that you have your own `externalRef`, that is your own reference specified for an `order`, you need to first use [Get All Orders](#get-all-orders) to retrieve our `order` id. For example, if you have the external references `ORD001` and `ORD002`, you can retrieve them when using the query string `filter[externalRef]=ORD001,ORD002`. Using the json response, you can map the ids accordingly.
+
+### When missing `product` id
+
+The most typical way to identify a product is using the `sku`. To retrieve our `product` ids with the skus `ART003` and `ART004`, you use [Get All Products](#get-all-products) with the query string `filter[sku]=ART003,ART004`. The returned json response can in the same way map ids accordingly. 
+
+### Connecting the new `orderProduct`
+
+```json
+...,
+"relationships": {
+  "order": {
+    "type": "order",
+    "id": "OURREF001"
+  },
+  "product": {
+    "type": "product",
+    "id": "3"
+  }
+}
+...
+```
+
+When creating the new `orderProduct`, apart from the attributes, you also need to define the `order` and `product` relationships. You must have access to both these resources, and it will throw an error if you attempt to insert a `product` that's already connected to the `order`.

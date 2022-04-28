@@ -333,6 +333,11 @@
                   <li>
                     <a href="#update-a-specific-order" class="toc-h2 toc-link" data-title="Update a Specific Order">Update a Specific Order</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order-products" class="toc-h1 toc-link" data-title="Order Products">Order Products</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-a-specific-order-product" class="toc-h2 toc-link" data-title="Get a Specific Order Product">Get a Specific Order Product</a>
                   </li>
@@ -400,13 +405,13 @@ curl <span class="s2">"https://oms-api.stockfillertech.com/v1/example"</span> <s
 You must replace <code>abcd1234-token-example-1234abcd</code> with your given personal API key.
 </aside>
 <h1 id='orders'>Orders</h1>
-<h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
+<p><h2 id='get-all-orders'>Get All Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-</blockquote>
+</blockquote></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -456,7 +461,9 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 </span></code></pre></div>
 
 <p>This endpoint retrieves all orders paginated.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>GET https://oms-api.stockfillertech.com/v1/order</code></p>
 
 <h3 id='attributes'>Attributes</h3>
@@ -521,7 +528,9 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <td>The order products&#39; product information</td>
 </tr>
 </tbody></table>
+
 <h3 id='filter-fields'>Filter fields</h3>
+
 <table><thead>
 <tr>
 <th>Field</th>
@@ -550,21 +559,22 @@ You must replace <code>abcd1234-token-example-1234abcd</code> with your given pe
 <td>Only accepts format YYYY-MM-DD</td>
 </tr>
 </tbody></table>
+
 <h3 id='sort-fields'>Sort fields</h3>
+
 <p>You can sort with <code>id</code>, <code>createdAt</code> &amp; <code>deliveryDate</code>. Default is <code>sort=-deliveryDate</code> if unspecified.</p>
 
 <aside class="notice">
 Many of the terms above are from JSON:API and you can <a href="#json-api"><strong>read more about them here</strong></a>.
 </aside>
 
-
-<h2 id='get-a-specific-order'>Get a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order/DEMOORDER1"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
+<p><h2 id='get-a-specific-order'>Get a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-</blockquote>
+</blockquote></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -604,7 +614,9 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 </span></code></pre></div>
 
 <p>This endpoint retrieves a specified <code>order</code>.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>GET https://oms-api.stockfillertech.com/v1/order/DEMOORDER1</code></p>
 
 <h3 id='attributes'>Attributes</h3>
@@ -674,14 +686,13 @@ Many of the terms above are from JSON:API and you can <a href="#json-api"><stron
 Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <code>externalRef</code>, you must first use it to retrieve our ID.
 </aside>
 
-
-<h2 id='get-order-example-with-include'>Get Order Example With <code>include</code></h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order/DEMOORDER1?include=orderProduct.product"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
+<p><h2 id='get-order-example-with-include'>Get Order Example With <code>include</code></h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1?include=orderProduct.product&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>By using the query string <code>include=orderProduct.product</code>, the response will be appended with:</p>
-</blockquote>
+</blockquote></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">...,</span><span class="w">
 </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -724,32 +735,33 @@ Replace <code>DEMOORDER1</code> with our order reference ID. When relying on <co
 
 <p>The obvious reason to utilize <code>include</code> is to avoid doing a bunch of follow up requests to complete the relationships data. Avoid using it however when the extra data is irrelevant, since it will increase response time. </p>
 
-
-<h2 id='update-a-specific-order'>Update a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/order/DEMOORDER1"</span> <span class="se">\\</span>
-  <span class="nt">-X</span> PATCH <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-        "data": {
-          "type": "order", 
-          "id": "DEMOORDER1", 
-          "attributes": {
-            "deliveryDate": "2020-01-02"
+<p><h2 id='update-a-specific-order'>Update a Specific Order</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/order/DEMOORDER1&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">&#39;{
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;order&quot;, 
+          &quot;id&quot;: &quot;DEMOORDER1&quot;, 
+          &quot;attributes&quot;: {
+            &quot;deliveryDate&quot;: &quot;2020-01-02&quot;
           }
         }
-      }'</span>
+      }&#39;</span>
 </code></pre></div>
 <blockquote>
 <p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
-</blockquote>
+</blockquote></p>
 
 <p>This endpoint updates and upon success retrieves a specified <code>order</code>.</p>
 
 <aside class="notice">
 When sending json data, basically when not using the GET method, make sure to include `Content-Type: application/vnd.api+json`.
 </aside>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>PATCH https://oms-api.stockfillertech.com/v1/order/DEMOORDER1</code></p>
 
 <h3 id='attributes'>Attributes</h3>
@@ -789,19 +801,18 @@ When sending json data, basically when not using the GET method, make sure to in
 </tbody></table>
 
 <p>Only <strong>Modifiable</strong> attributes can be sent to this endpoint. </p>
+
 <h3 id='relationships'>Relationships</h3>
+
 <p>Currently we do not support adding or removing relationships to <code>order</code>. You can however <code>PATCH</code> relevant <code>orderProduct</code> resource in separate calls.</p>
-
-
-# Order Products
-
-<h2 id='get-a-specific-order-product'>Get a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/orderProduct/1"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span>
+<h1 id='order-products'>Order Products</h1>
+<p><h2 id='get-a-specific-order-product'>Get a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-</blockquote>
+</blockquote></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -831,7 +842,9 @@ When sending json data, basically when not using the GET method, make sure to in
 </span></code></pre></div>
 
 <p>This endpoint retrieves a specified <code>orderProduct</code>.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>GET https://oms-api.stockfillertech.com/v1/orderProduct/1</code></p>
 
 <h3 id='attributes'>Attributes</h3>
@@ -891,27 +904,42 @@ When sending json data, basically when not using the GET method, make sure to in
 </tr>
 </tbody></table>
 
-
-<h2 id='create-a-specific-order-product'>Create a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/orderProduct"</span> <span class="se">\\</span>
-  <span class="nt">-X</span> POST <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-        "data": {
-          "type": "orderProduct", 
-          "attributes": {
-            "totalOrdered": 5
+<p><h2 id='create-a-specific-order-product'>Create a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">&#39;{
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;orderProduct&quot;, 
+          &quot;attributes&quot;: {
+            &quot;totalOrdered&quot;: 5
+          },
+          &quot;relationships&quot;: {
+            &quot;order&quot;: {
+              &quot;data&quot;: {
+                &quot;type&quot;: &quot;order&quot;,
+                &quot;id&quot;: &quot;DEMOORDER1&quot;
+              }
+            },
+            &quot;product&quot;: {
+              &quot;data&quot;: {
+                &quot;type&quot;: &quot;product&quot;,
+                &quot;id&quot;: &quot;2&quot;
+              }
+            }
           }
         }
-      }'</span>
+      }&#39;</span>
 </code></pre></div>
 <blockquote>
 <p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
-</blockquote>
+</blockquote></p>
 
 <p>This endpoint creates and retrieves a specified <code>orderProduct</code>.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
+
 <p><code>POST https://oms-api.stockfillertech.com/v1/orderProduct</code></p>
 
 <h3 id='attributes'>Attributes</h3>
@@ -968,55 +996,52 @@ When sending json data, basically when not using the GET method, make sure to in
 </tr>
 </tbody></table>
 
-
-<h2 id='create-order-product-example'>Create Order Product Example</h2>
-
-<p>When you need to add a new product to an order, some extra steps might be required to obtain all relevant IDs. Here&#39;s an example on the steps required. </p>
-
-<h3 id='when-missing-order-id'>When missing <code>order</code> id</h3>
-
-<p>In the case that you have your own <code>externalRef</code>, that is your own reference specified for an <code>order</code>, you need to first use <a href="#get-all-orders">Get All Orders</a> to retrieve our <code>order</code> id. For example, if you have the external references <code>ORD001</code> and <code>ORD002</code>, you can retrieve them when using the query string <code>filter[externalRef]=ORD001,ORD002</code>. Using the json response, you can map the ids accordingly.</p>
-
-<h3 id='when-missing-product-id'>When missing <code>product</code> id</h3>
-
-<p>The most typical way to identify a product is using the <code>sku</code>. To retrieve our <code>product</code> ids with the skus <code>ART003</code> and <code>ART004</code>, you use <a href="#get-all-products">Get All Products</a> with the query string <code>filter[sku]=ART003,ART004</code>. The returned json response can in the same way map ids accordingly. </p>
-
-<h3 id='connecting-the-new-orderproduct'>Connecting the new <code>orderProduct</code></h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="err">...,</span><span class="w">
-</span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OURREF001"</span><span class="w">
+<p><h2 id='create-order-product-example'>Create Order Product Example</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="err">...,</span><span class="w">
+</span><span class="nl">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OURREF001&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+  </span><span class="nl">&quot;product&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;product&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="err">...</span><span class="w">
 </span></code></pre></div>
-<p>When creating the new <code>orderProduct</code>, apart from the attributes, you also need to define the <code>order</code> and <code>product</code> relationships. You must have access to both these resources, and it will throw an error if you attempt to insert a <code>product</code> that&#39;s already connected to the <code>order</code>.</p>
+<p>When you need to add a new product to an order, some extra steps might be required to obtain all relevant IDs. Here&#39;s an example on the steps required. </p>
+<h3 id='when-missing-order-id'>When missing <code>order</code> id</h3>
+<p>In the case that you have your own <code>externalRef</code>, that is your own reference specified for an <code>order</code>, you need to first use <a href="#get-all-orders">Get All Orders</a> to retrieve our <code>order</code> id. For example, if you have the external references <code>ORD001</code> and <code>ORD002</code>, you can retrieve them when using the query string <code>filter[externalRef]=ORD001,ORD002</code>. Using the json response, you can map the ids accordingly.</p>
+<h3 id='when-missing-product-id'>When missing <code>product</code> id</h3>
+<p>The most typical way to identify a product is using the <code>sku</code>. To retrieve our <code>product</code> ids with the skus <code>ART003</code> and <code>ART004</code>, you use <a href="#get-all-products">Get All Products</a> with the query string <code>filter[sku]=ART003,ART004</code>. The returned json response can in the same way map ids accordingly. </p>
+<h3 id='connecting-the-new-orderproduct'>Connecting the new <code>orderProduct</code></h3>
+<p>When creating the new <code>orderProduct</code>, apart from the attributes, you also need to define the <code>order</code> and <code>product</code> relationships. You must have access to both these resources, and it will throw an error if you attempt to insert a <code>product</code> that&#39;s already connected to the <code>order</code>.</p></p>
 
-
-<h2 id='update-a-specific-order-product'>Update a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://oms-api.stockfillertech.com/v1/orderProduct/1"</span> <span class="se">\\</span>
-  <span class="nt">-X</span> PATCH <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcd1234-token-example-1234abcd"</span> <span class="se">\\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-        "data": {
-          "type": "orderProduct", 
-          "id": "1", 
-          "attributes": {
-            "totalDelivered": 5
+<p><h2 id='update-a-specific-order-product'>Update a Specific Order Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">&quot;https://oms-api.stockfillertech.com/v1/orderProduct/1&quot;</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Accept: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Authorization: Bearer abcd1234-token-example-1234abcd&quot;</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">&quot;Content-Type: application/vnd.api+json&quot;</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">&#39;{
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;orderProduct&quot;, 
+          &quot;id&quot;: &quot;1&quot;, 
+          &quot;attributes&quot;: {
+            &quot;totalDelivered&quot;: 5
           }
         }
-      }'</span>
+      }&#39;</span>
 </code></pre></div>
 <blockquote>
 <p>If successful, the above command returns the modified resource in the same structure as <code>GET</code></p>
-</blockquote>
+</blockquote></p>
 
 <p>This endpoint updates and upon success retrieves a specified <code>orderProduct</code>.</p>
+
 <h3 id='http-request'>HTTP Request</h3>
 
 <p><code>PATCH https://oms-api.stockfillertech.com/v1/orderProduct/1</code></p>
